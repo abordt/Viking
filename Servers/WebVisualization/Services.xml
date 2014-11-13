@@ -1,17 +1,32 @@
 <?xml version="1.0"?>
 <Endpoints>
-  <Server name="connectomes.utah.edu" url="https://connectomes.utah.edu/Services/" Selected="True">
-    <Volume name="Rabbit Retinal Connectome 1" relPath="RabbitBinary/Annotate.svc" Selected="True"/>
-	  <Volume name="6250-6A" relPath="6250-6ABinary/Annotate.svc"/>
-	  <Volume name="DebelloOB1" relPath="DebelloOB1Binary/Annotate.svc"/>
-		<Volume name="Training" relPath="TrainingBinary/Annotate.svc"/>
-	</Server>
-  <Server name="Test" url="https://connectomes.utah.edu/Services/">
-    <Volume name="Rabbit Retinal Connectome 1" relPath="RabbitBinaryDebug/Annotate.svc" Selected="True"/>
-  </Server>
-  <Server name="UCSB" url="https://connectomes.utah.edu/Services/">
-	  <Volume name="RabbitUCSB" relPath="RabbitUCSBBinary/Annotate.svc"/>
-	</Server>
-
+	<Lab name="MarcLab(connectome.utah.edu)" server="connectomes.utah.edu">
+		<Volume name="Rabbit(MarcLab)" database="Rabbit">
+			<Service path="https://connectomes.utah.edu/Services/RabbitBinary/Annotate.svc"/>
+		</Volume>
+		
+		<Volume name="RC2" database="RC2" >
+			<Service path="https://connectomes.utah.edu/Services/RC2Binary/Annotate.svc"/>
+		</Volume>
+		<Volume name="6250-6A" database="6250-6A" >
+			<Service path="https://connectomes.utah.edu/Services/6250-6ABinary/Annotate.svc"/>
+		</Volume>
+		<Volume name="DebelloOB1" database="DebelloOB1" >
+			<Service path="https://connectomes.utah.edu/Services/DebelloOB1Binary/Annotate.svc"/>
+		</Volume>
+		<Volume name="Training" database="Training">
+			<Service path="https://connectomes.utah.edu/Services/TrainingBinary/Annotate.svc"/>
+		</Volume>
+	</Lab>
+	<Lab name="Marshak" server="connectomes.utah.edu">
+		<Volume name="RC1 Marshak DB(MarcLab)" database="Marshak">
+			<Service path="https://connectomes.utah.edu/Services/MarshakBinary/Annotate.svc"/>
+		</Volume>
+	</Lab>
+	<Lab name="UCSB" server="connectomes.utah.edu">
+		<Volume name="RabbitUCSB" database="RabbitUCSB">
+			<Service path="https://connectomes.utah.edu/Services/RabbitUCSBBinary/Annotate.svc"/>
+		</Volume>
+	</Lab>
 
 </Endpoints>
