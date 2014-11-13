@@ -583,7 +583,10 @@ namespace ConnectomeViz.Controllers
 
                 this.radius = location.Radius;
 
-                this.links = location.Links.ToList();
+                if (location.Links == null)
+                    this.links = new List<long>();
+                else
+                    this.links = location.Links.ToList();
             }
 
         }

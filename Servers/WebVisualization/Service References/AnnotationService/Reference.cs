@@ -254,9 +254,6 @@ namespace ConnectomeViz.AnnotationService {
         private long SectionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string[] TagsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool TerminalField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -384,19 +381,6 @@ namespace ConnectomeViz.AnnotationService {
                 if ((this.SectionField.Equals(value) != true)) {
                     this.SectionField = value;
                     this.RaisePropertyChanged("Section");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string[] Tags {
-            get {
-                return this.TagsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TagsField, value) != true)) {
-                    this.TagsField = value;
-                    this.RaisePropertyChanged("Tags");
                 }
             }
         }
