@@ -655,10 +655,11 @@ namespace ConnectomeViz.Controllers
                 System.IO.File.Delete(file);
             }
 
-            XmlWriter writeXML = XmlWriter.Create(pathInQuestion + id + ".xml");
-            finalXML.WriteTo(writeXML);
-            writeXML.Flush();
-            writeXML.Close();
+            using (XmlWriter writeXML = XmlWriter.Create(pathInQuestion + id + ".xml"))
+            {
+                finalXML.WriteTo(writeXML);
+                writeXML.Flush();
+            }
 
             System.IO.File.Move(pathInQuestion + id + ".xml", pathInQuestion + id + ".dae");
 

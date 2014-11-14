@@ -114,14 +114,16 @@ namespace ConnectomeViz.Controllers
                     System.IO.File.Delete(filepath);
                 }
 
-                FileStream fs = new FileStream(filepath, FileMode.Create, FileAccess.Write);
-                StreamWriter sw = new StreamWriter(fs);
-                sw.Write("<Structure3D>");
-                sw.Write(State.selectedLab+","+State.selectedService+","+cellID);
-                sw.Write("</Structure3D>");
-                sw.Flush();
-                sw.Close();
-                fs.Close();
+                using (FileStream fs = new FileStream(filepath, FileMode.Create, FileAccess.Write))
+                {
+                    using (StreamWriter sw = new StreamWriter(fs))
+                    {
+                        sw.Write("<Structure3D>");
+                        sw.Write(State.selectedLab + "," + State.selectedService + "," + cellID);
+                        sw.Write("</Structure3D>");
+                        sw.Flush();
+                    }
+                }
 
                 return View("Locations3D");
             }
@@ -309,12 +311,16 @@ namespace ConnectomeViz.Controllers
 
             string localDir = Server.MapPath("~") + "\\Files\\" + HttpContext.User.Identity.Name + "\\";
             string fileDir = localDir + id;
-
-            FileStream fs = new FileStream(fileDir + ".json", FileMode.Open, FileAccess.Read);
-            StreamReader sr = new StreamReader(fs);
-            string obj = sr.ReadToEnd().ToString();
-            JavaScriptSerializer deserialize = new JavaScriptSerializer();
-            var sendGraph = (GraphJSON)deserialize.Deserialize<GraphJSON>(obj);
+            GraphJSON sendGraph;
+            using (FileStream fs = new FileStream(fileDir + ".json", FileMode.Open, FileAccess.Read))
+            {
+                using (StreamReader sr = new StreamReader(fs))
+                {
+                    string obj = sr.ReadToEnd().ToString();
+                    JavaScriptSerializer deserialize = new JavaScriptSerializer();
+                    sendGraph = (GraphJSON)deserialize.Deserialize<GraphJSON>(obj);
+                }
+            }
 
             return Json(sendGraph, JsonRequestBehavior.AllowGet);
         }
@@ -526,11 +532,15 @@ namespace ConnectomeViz.Controllers
             //Add scripts to svg
             if (System.IO.File.Exists(svgfile))
             {
-                FileStream file = new FileStream(svgfile, FileMode.OpenOrCreate, FileAccess.ReadWrite);
-                StreamReader sr = new StreamReader(file);
-                StringBuilder contents = new StringBuilder(sr.ReadToEnd());
-                sr.Close();
-                file.Close();
+                StringBuilder contents;
+                using (FileStream file = new FileStream(svgfile, FileMode.OpenOrCreate, FileAccess.ReadWrite))
+                {
+                    using (StreamReader sr = new StreamReader(file))
+                    {
+                        contents = new StringBuilder(sr.ReadToEnd());
+                    }
+                }
+
                 System.IO.File.Delete(svgfile);
 
 
@@ -538,11 +548,13 @@ namespace ConnectomeViz.Controllers
                 contents.Replace(searchfor, searchfor +
                     "\n<script xlink:href=\"" + virtualRoot + "/Scripts/SVGzoom.js\"/>\n<script xlink:href=\"" + virtualRoot + "/Scripts/effect.js\"/>");
 
-                FileStream fl = new FileStream(svgfile, FileMode.Create);
-                StreamWriter write = new StreamWriter(fl);
-                write.Write(contents.ToString());
-                write.Close();
-                fl.Close();
+                using (FileStream fl = new FileStream(svgfile, FileMode.Create))
+                {
+                    using (StreamWriter write = new StreamWriter(fl))
+                    {
+                        write.Write(contents.ToString());
+                    }
+                }
 
                 //FileStream f2 = new FileStream(fileDir + "changed.txt", FileMode.Create);
                 //StreamWriter wrr = new StreamWriter(f2);

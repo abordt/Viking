@@ -50,22 +50,23 @@ namespace ConnectomeViz.Controllers
         {
             State.selectedLab = lab.ToString().Trim();
             State.selectedService = dataSource.ToString().Trim();
+             List<SendObject> send = new List<SendObject>();
 
-            CircuitClient client = State.CreateCircuitClient();
-            client.Open();
-            SynapseObject retObj = client.getSynapseStats();
+             using (CircuitClient client = State.CreateCircuitClient())
+             {
+                 client.Open();
+                 SynapseObject retObj = client.getSynapseStats();
 
-            List<SendObject> send = new List<SendObject>();
-           
-            foreach (var row in retObj.objList)
-            {
-                SendObject temp = new SendObject();
-                temp.id = row.id;
-                temp.synapses = row.synapses;
-                send.Add(temp);
-            }
 
-            client.Close();
+
+                 foreach (var row in retObj.objList)
+                 {
+                     SendObject temp = new SendObject();
+                     temp.id = row.id;
+                     temp.synapses = row.synapses;
+                     send.Add(temp);
+                 }
+             }
 
             return Json(send, JsonRequestBehavior.AllowGet);
 

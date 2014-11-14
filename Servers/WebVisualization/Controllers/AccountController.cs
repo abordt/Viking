@@ -458,24 +458,24 @@ namespace ConnectomeViz.Controllers
 
                         madmin.Dispose();
 
-                        MailMessage mm = new MailMessage();
+                        using (MailMessage mm = new MailMessage())
+                        {
 
-                        mm.From = new MailAddress("james.r.anderson@utah.edu", "Marc lab, U of U");
+                            mm.From = new MailAddress("james.r.anderson@utah.edu", "Marc lab, U of U");
 
-                        mm.To.Add(email);
+                            mm.To.Add(email);
 
-                        mm.Subject = "Welcome to Marc lab";
+                            mm.Subject = "Welcome to Marc lab";
 
-                        mm.Body = "<br/>Thank you for registering.Your account is Approved and ready for use <br/><br/>Please visit http://connectomes.utah.edu/viz for visualizations or <br/><br/>visit http://connectomes.utah.edu to download viking" +
-                                     "<br/><br/>"+ "--" + "<br/>" + "<a href=\"http://prometheus.med.utah.edu/~marclab/index.html\">Marc Lab, University of Utah</a>";
+                            mm.Body = "<br/>Thank you for registering.Your account is Approved and ready for use <br/><br/>Please visit http://connectomes.utah.edu/viz for visualizations or <br/><br/>visit http://connectomes.utah.edu to download viking" +
+                                         "<br/><br/>" + "--" + "<br/>" + "<a href=\"http://prometheus.med.utah.edu/~marclab/index.html\">Marc Lab, University of Utah</a>";
 
-                        mm.IsBodyHtml = true;
+                            mm.IsBodyHtml = true;
 
-                        mm.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
+                            mm.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
 
-                        ss2.Send(mm);
-
-                        mm.Dispose();
+                            ss2.Send(mm);
+                        }
 
                         ViewData["message"] = "Your Account is Activated!! please visit homepage and login: "+ "<a href=\""+ host +"\">Homepage</a>";
 

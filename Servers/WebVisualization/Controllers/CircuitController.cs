@@ -314,14 +314,17 @@ namespace ConnectomeViz.Controllers
 
             //Create dictionary of structure types
             webService_GetStructureTypes();
+            Graphx graphx = null;
 
-            CircuitClient circuitClient = State.CreateCircuitClient();
-            circuitClient.Open();
+            using (CircuitClient circuitClient = State.CreateCircuitClient())
+            {
+                circuitClient.Open();
 
-            //string s = circuitClient.GetWorkingResponse(10);
-            
+                //string s = circuitClient.GetWorkingResponse(10);
 
-            Graphx graphx = circuitClient.getGraph(cellID, hops + 1);
+
+                graphx = circuitClient.getGraph(cellID, hops + 1);
+            } 
 
             
             List<Edge> tmpEdgeList = new List<Edge>();
@@ -878,14 +881,15 @@ namespace ConnectomeViz.Controllers
             if (System.IO.File.Exists(userFile+".json"))
                 System.IO.File.Delete(userFile + ".json");
 
-            FileStream fs = new FileStream(userFile + ".json", FileMode.Create, FileAccess.Write);
-            StreamWriter sw = new StreamWriter(fs);
-            JavaScriptSerializer oSerializer = new JavaScriptSerializer();
-            sw.Write(oSerializer.Serialize(new { page = "1", total = (edgesJson.Count % 10 + 1), records = edgesJson.Count.ToString(), rows = edgesJson }));
-            //sw.Write(oSerializer.Serialize(edgesJson));
-
-            sw.Close();
-            fs.Close();
+            using (FileStream fs = new FileStream(userFile + ".json", FileMode.Create, FileAccess.Write))
+            {
+                using (StreamWriter sw = new StreamWriter(fs))
+                {
+                    JavaScriptSerializer oSerializer = new JavaScriptSerializer();
+                    sw.Write(oSerializer.Serialize(new { page = "1", total = (edgesJson.Count % 10 + 1), records = edgesJson.Count.ToString(), rows = edgesJson }));
+                    //sw.Write(oSerializer.Serialize(edgesJson));
+                }
+            }
 
             if (System.IO.File.Exists(storedFile + ".json"))
                 System.IO.File.Delete(storedFile + ".json");

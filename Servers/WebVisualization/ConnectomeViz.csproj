@@ -29,6 +29,18 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <PublishDatabaseSettings>
+      <Objects>
+        <ObjectGroup Name="RabbitConnectionString-Deployment" Order="1">
+          <Destination Path="" />
+          <Object Type="dbFullSql" Enabled="False">
+            <PreSource Path="Data Source=OpR-Marc-RC1,1433\SQLEXPRESS%3bInitial Catalog=Rabbit%3bPersist Security Info=True%3bUser ID=Website" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Debug\AutoScripts\RabbitConnectionString-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+      </Objects>
+    </PublishDatabaseSettings>
+    <DeployIisAppPath>Default Web Site/Viz</DeployIisAppPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -38,6 +50,20 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <IncludeIisSettings>false</IncludeIisSettings>
+    <PublishDatabases>true</PublishDatabases>
+    <PublishDatabaseSettings>
+      <Objects>
+        <ObjectGroup Name="RabbitConnectionString-Deployment" Order="1">
+          <Destination Path="" />
+          <Object Type="dbFullSql">
+            <PreSource Path="Data Source=OpR-Marc-RC1,1433\SQLEXPRESS%3bInitial Catalog=Rabbit%3bPersist Security Info=True%3bUser ID=Website" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Release\AutoScripts\RabbitConnectionString-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+      </Objects>
+    </PublishDatabaseSettings>
+    <FilesToIncludeForPublish>AllFilesInTheProject</FilesToIncludeForPublish>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Hammock.ClientProfile">
@@ -266,6 +292,35 @@
     <Content Include="Content\ui.jqgrid.css" />
     <Content Include="Content\ui.multiselect.css" />
     <Content Include="Content\contactable.css" />
+    <Content Include="flex\App.jar">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="flex\flash_config.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="flex\launch.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="flex\README.TXT">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="flex\Structure3D.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="flex\SynapticStats.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="flex\VikingPlot.jar">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="flex\VikingPlot.java">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="flex\Wire.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="flex\lib\json_simple-1.1.jar" />
+    <Content Include="MarcLab%28connectome.utah.edu%29_Rabbit%28MarcLab%29_18282_1_reduced_nonpositioned.svg" />
     <Content Include="Scripts\3DVizScript.js" />
     <Content Include="Scripts\facebox.js" />
     <Content Include="Content\farbtastic.css" />
@@ -372,87 +427,6 @@
     <Content Include="Scripts\jquery.validate.pack.js" />
     <Content Include="Scripts\o3d\3DLoaderSingle.js" />
     <Content Include="Scripts\o3d\3DLoader.js" />
-    <Content Include="Scripts\o3d\o3d-webgl\archive_request.js" />
-    <Content Include="Scripts\o3d\o3d-webgl\base.js" />
-    <Content Include="Scripts\o3d\o3d-webgl\bitmap.js" />
-    <Content Include="Scripts\o3d\o3d-webgl\bounding_box.js" />
-    <Content Include="Scripts\o3d\o3d-webgl\buffer.js" />
-    <Content Include="Scripts\o3d\o3d-webgl\clear_buffer.js" />
-    <Content Include="Scripts\o3d\o3d-webgl\client.js" />
-    <Content Include="Scripts\o3d\o3d-webgl\counter.js" />
-    <Content Include="Scripts\o3d\o3d-webgl\curve.js" />
-    <Content Include="Scripts\o3d\o3d-webgl\draw_context.js" />
-    <Content Include="Scripts\o3d\o3d-webgl\draw_element.js" />
-    <Content Include="Scripts\o3d\o3d-webgl\draw_list.js" />
-    <Content Include="Scripts\o3d\o3d-webgl\draw_pass.js" />
-    <Content Include="Scripts\o3d\o3d-webgl\effect.js" />
-    <Content Include="Scripts\o3d\o3d-webgl\element.js" />
-    <Content Include="Scripts\o3d\o3d-webgl\event.js" />
-    <Content Include="Scripts\o3d\o3d-webgl\field.js" />
-    <Content Include="Scripts\o3d\o3d-webgl\file_request.js" />
-    <Content Include="Scripts\o3d\o3d-webgl\function.js" />
-    <Content Include="Scripts\o3d\o3d-webgl\material.js" />
-    <Content Include="Scripts\o3d\o3d-webgl\named_object.js" />
-    <Content Include="Scripts\o3d\o3d-webgl\named_object_base.js" />
-    <Content Include="Scripts\o3d\o3d-webgl\object_base.js" />
-    <Content Include="Scripts\o3d\o3d-webgl\pack.js" />
-    <Content Include="Scripts\o3d\o3d-webgl\param.js" />
-    <Content Include="Scripts\o3d\o3d-webgl\param_array.js" />
-    <Content Include="Scripts\o3d\o3d-webgl\param_object.js" />
-    <Content Include="Scripts\o3d\o3d-webgl\param_operation.js" />
-    <Content Include="Scripts\o3d\o3d-webgl\primitive.js" />
-    <Content Include="Scripts\o3d\o3d-webgl\raw_data.js" />
-    <Content Include="Scripts\o3d\o3d-webgl\ray_intersection_info.js" />
-    <Content Include="Scripts\o3d\o3d-webgl\render_node.js" />
-    <Content Include="Scripts\o3d\o3d-webgl\render_surface.js" />
-    <Content Include="Scripts\o3d\o3d-webgl\render_surface_set.js" />
-    <Content Include="Scripts\o3d\o3d-webgl\sampler.js" />
-    <Content Include="Scripts\o3d\o3d-webgl\shape.js" />
-    <Content Include="Scripts\o3d\o3d-webgl\skin.js" />
-    <Content Include="Scripts\o3d\o3d-webgl\state.js" />
-    <Content Include="Scripts\o3d\o3d-webgl\state_set.js" />
-    <Content Include="Scripts\o3d\o3d-webgl\stream.js" />
-    <Content Include="Scripts\o3d\o3d-webgl\stream_bank.js" />
-    <Content Include="Scripts\o3d\o3d-webgl\texture.js" />
-    <Content Include="Scripts\o3d\o3d-webgl\transform.js" />
-    <Content Include="Scripts\o3d\o3d-webgl\tree_traversal.js" />
-    <Content Include="Scripts\o3d\o3d-webgl\types.js" />
-    <Content Include="Scripts\o3d\o3d-webgl\vertex_source.js" />
-    <Content Include="Scripts\o3d\o3d-webgl\viewport.js" />
-    <Content Include="Scripts\o3d\o3djs\arcball.js" />
-    <Content Include="Scripts\o3d\o3djs\base.js" />
-    <Content Include="Scripts\o3d\o3djs\camera.js" />
-    <Content Include="Scripts\o3d\o3djs\cameracontroller.js" />
-    <Content Include="Scripts\o3d\o3djs\canvas.js" />
-    <Content Include="Scripts\o3d\o3djs\debug.js" />
-    <Content Include="Scripts\o3d\o3djs\dump.js" />
-    <Content Include="Scripts\o3d\o3djs\effect.js" />
-    <Content Include="Scripts\o3d\o3djs\element.js" />
-    <Content Include="Scripts\o3d\o3djs\error.js" />
-    <Content Include="Scripts\o3d\o3djs\event.js" />
-    <Content Include="Scripts\o3d\o3djs\fps.js" />
-    <Content Include="Scripts\o3d\o3djs\gpu2d.js" />
-    <Content Include="Scripts\o3d\o3djs\io.js" />
-    <Content Include="Scripts\o3d\o3djs\lineprimitives.js" />
-    <Content Include="Scripts\o3d\o3djs\loader.js" />
-    <Content Include="Scripts\o3d\o3djs\manipulators.js" />
-    <Content Include="Scripts\o3d\o3djs\material.js" />
-    <Content Include="Scripts\o3d\o3djs\math.js" />
-    <Content Include="Scripts\o3d\o3djs\pack.js" />
-    <Content Include="Scripts\o3d\o3djs\particles.js" />
-    <Content Include="Scripts\o3d\o3djs\performance.js" />
-    <Content Include="Scripts\o3d\o3djs\picking.js" />
-    <Content Include="Scripts\o3d\o3djs\primitives.js" />
-    <Content Include="Scripts\o3d\o3djs\quaternions.js" />
-    <Content Include="Scripts\o3d\o3djs\rendergraph.js" />
-    <Content Include="Scripts\o3d\o3djs\scene.js" />
-    <Content Include="Scripts\o3d\o3djs\serialization.js" />
-    <Content Include="Scripts\o3d\o3djs\shape.js" />
-    <Content Include="Scripts\o3d\o3djs\simple.js" />
-    <Content Include="Scripts\o3d\o3djs\test.js" />
-    <Content Include="Scripts\o3d\o3djs\texture.js" />
-    <Content Include="Scripts\o3d\o3djs\util.js" />
-    <Content Include="Scripts\o3d\o3djs\webgl.js" />
     <Content Include="Scripts\StatsScript.js" />
     <Content Include="Scripts\js\i18n\grid.locale-bg.js" />
     <Content Include="Scripts\js\i18n\grid.locale-bg1251.js" />
@@ -601,133 +575,25 @@
     <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
     <Content Include="Scripts\MicrosoftMvcValidation.js" />
     <None Include="Content\images\Thumbs.db" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\all-wcprops" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\entries" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\prop-base\archive_request.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\prop-base\base.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\prop-base\bitmap.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\prop-base\bounding_box.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\prop-base\buffer.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\prop-base\clear_buffer.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\prop-base\client.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\prop-base\draw_context.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\prop-base\draw_element.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\prop-base\draw_list.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\prop-base\draw_pass.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\prop-base\effect.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\prop-base\element.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\prop-base\event.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\prop-base\field.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\prop-base\file_request.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\prop-base\material.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\prop-base\named_object.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\prop-base\named_object_base.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\prop-base\object_base.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\prop-base\pack.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\prop-base\param.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\prop-base\param_object.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\prop-base\primitive.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\prop-base\raw_data.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\prop-base\ray_intersection_info.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\prop-base\render_node.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\prop-base\render_surface.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\prop-base\render_surface_set.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\prop-base\sampler.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\prop-base\shape.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\prop-base\state.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\prop-base\state_set.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\prop-base\stream.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\prop-base\stream_bank.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\prop-base\texture.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\prop-base\transform.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\prop-base\tree_traversal.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\prop-base\types.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\prop-base\viewport.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\text-base\archive_request.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\text-base\base.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\text-base\bitmap.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\text-base\bounding_box.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\text-base\buffer.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\text-base\clear_buffer.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\text-base\client.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\text-base\counter.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\text-base\curve.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\text-base\draw_context.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\text-base\draw_element.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\text-base\draw_list.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\text-base\draw_pass.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\text-base\effect.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\text-base\element.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\text-base\event.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\text-base\field.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\text-base\file_request.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\text-base\function.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\text-base\material.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\text-base\named_object.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\text-base\named_object_base.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\text-base\object_base.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\text-base\pack.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\text-base\param.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\text-base\param_array.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\text-base\param_object.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\text-base\param_operation.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\text-base\primitive.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\text-base\raw_data.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\text-base\ray_intersection_info.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\text-base\render_node.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\text-base\render_surface.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\text-base\render_surface_set.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\text-base\sampler.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\text-base\shape.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\text-base\skin.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\text-base\state.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\text-base\state_set.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\text-base\stream.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\text-base\stream_bank.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\text-base\texture.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\text-base\transform.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\text-base\tree_traversal.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\text-base\types.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\text-base\vertex_source.js.svn-base" />
-    <None Include="Scripts\o3d\o3d-webgl\.svn\text-base\viewport.js.svn-base" />
-    <None Include="Scripts\o3d\o3djs\.svn\all-wcprops" />
-    <None Include="Scripts\o3d\o3djs\.svn\entries" />
-    <None Include="Scripts\o3d\o3djs\.svn\prop-base\base.js.svn-base" />
-    <None Include="Scripts\o3d\o3djs\.svn\prop-base\webgl.js.svn-base" />
-    <None Include="Scripts\o3d\o3djs\.svn\text-base\arcball.js.svn-base" />
-    <None Include="Scripts\o3d\o3djs\.svn\text-base\base.js.svn-base" />
-    <None Include="Scripts\o3d\o3djs\.svn\text-base\camera.js.svn-base" />
-    <None Include="Scripts\o3d\o3djs\.svn\text-base\cameracontroller.js.svn-base" />
-    <None Include="Scripts\o3d\o3djs\.svn\text-base\canvas.js.svn-base" />
-    <None Include="Scripts\o3d\o3djs\.svn\text-base\debug.js.svn-base" />
-    <None Include="Scripts\o3d\o3djs\.svn\text-base\dump.js.svn-base" />
-    <None Include="Scripts\o3d\o3djs\.svn\text-base\effect.js.svn-base" />
-    <None Include="Scripts\o3d\o3djs\.svn\text-base\element.js.svn-base" />
-    <None Include="Scripts\o3d\o3djs\.svn\text-base\error.js.svn-base" />
-    <None Include="Scripts\o3d\o3djs\.svn\text-base\event.js.svn-base" />
-    <None Include="Scripts\o3d\o3djs\.svn\text-base\fps.js.svn-base" />
-    <None Include="Scripts\o3d\o3djs\.svn\text-base\gpu2d.js.svn-base" />
-    <None Include="Scripts\o3d\o3djs\.svn\text-base\io.js.svn-base" />
-    <None Include="Scripts\o3d\o3djs\.svn\text-base\lineprimitives.js.svn-base" />
-    <None Include="Scripts\o3d\o3djs\.svn\text-base\loader.js.svn-base" />
-    <None Include="Scripts\o3d\o3djs\.svn\text-base\manipulators.js.svn-base" />
-    <None Include="Scripts\o3d\o3djs\.svn\text-base\material.js.svn-base" />
-    <None Include="Scripts\o3d\o3djs\.svn\text-base\math.js.svn-base" />
-    <None Include="Scripts\o3d\o3djs\.svn\text-base\pack.js.svn-base" />
-    <None Include="Scripts\o3d\o3djs\.svn\text-base\particles.js.svn-base" />
-    <None Include="Scripts\o3d\o3djs\.svn\text-base\performance.js.svn-base" />
-    <None Include="Scripts\o3d\o3djs\.svn\text-base\picking.js.svn-base" />
-    <None Include="Scripts\o3d\o3djs\.svn\text-base\primitives.js.svn-base" />
-    <None Include="Scripts\o3d\o3djs\.svn\text-base\quaternions.js.svn-base" />
-    <None Include="Scripts\o3d\o3djs\.svn\text-base\rendergraph.js.svn-base" />
-    <None Include="Scripts\o3d\o3djs\.svn\text-base\scene.js.svn-base" />
-    <None Include="Scripts\o3d\o3djs\.svn\text-base\serialization.js.svn-base" />
-    <None Include="Scripts\o3d\o3djs\.svn\text-base\shape.js.svn-base" />
-    <None Include="Scripts\o3d\o3djs\.svn\text-base\simple.js.svn-base" />
-    <None Include="Scripts\o3d\o3djs\.svn\text-base\test.js.svn-base" />
-    <None Include="Scripts\o3d\o3djs\.svn\text-base\texture.js.svn-base" />
-    <None Include="Scripts\o3d\o3djs\.svn\text-base\util.js.svn-base" />
-    <None Include="Scripts\o3d\o3djs\.svn\text-base\webgl.js.svn-base" />
+    <Content Include="flex\.actionScriptProperties">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="flex\launch.jnlp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="flex\Mouse.class">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="flex\Structure3D.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="flex\SynapticStats.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="flex\VikingPlot.jnlp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="MarcLab%28connectome.utah.edu%29_Rabbit%28MarcLab%29_18282_1_reduced_nonpositioned.json" />
     <None Include="Service References\AnnotationService\Annotation.Service.GraphClasses.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -860,7 +726,6 @@
     <Content Include="Views\Account\Verify.aspx" />
     <Content Include="Views\Shared\Admin.Master" />
     <Content Include="Views\Shared\PaginatedListFooter.ascx" />
-    <Content Include="Views\Account\Stats\Index.aspx" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -870,14 +735,9 @@
     <WCFMetadataStorage Include="Service References\ObjectFileService\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Scripts\o3d\o3d-webgl\.svn\props\" />
-    <Folder Include="Scripts\o3d\o3d-webgl\.svn\tmp\prop-base\" />
-    <Folder Include="Scripts\o3d\o3d-webgl\.svn\tmp\props\" />
-    <Folder Include="Scripts\o3d\o3d-webgl\.svn\tmp\text-base\" />
-    <Folder Include="Scripts\o3d\o3djs\.svn\props\" />
-    <Folder Include="Scripts\o3d\o3djs\.svn\tmp\prop-base\" />
-    <Folder Include="Scripts\o3d\o3djs\.svn\tmp\props\" />
-    <Folder Include="Scripts\o3d\o3djs\.svn\tmp\text-base\" />
+    <Folder Include="Files\" />
+    <Folder Include="NewFolder1\" />
+    <Folder Include="Views\Account\Stats\" />
     <Folder Include="Views\Profile\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
@@ -897,7 +757,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>10610</DevelopmentServerPort>
           <DevelopmentServerVPath>/Viz</DevelopmentServerVPath>
-          <IISUrl>http://connectomes.utah.edu/viz</IISUrl>
+          <IISUrl>http://connectomes.utah.edu/viz_release</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>http://connectomes.utah.edu/viz</CustomServerUrl>
