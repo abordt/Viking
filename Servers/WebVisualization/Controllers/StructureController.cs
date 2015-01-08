@@ -836,7 +836,7 @@ namespace ConnectomeViz.Controllers
                                     temp.type = type.Name;
 
                                     //Figure out if the synapse is linked, if not, use a seperate color
-                                    if (child.Links.Length > 0)
+                                    if (child.Links != null && child.Links.Length > 0)
                                         temp.SetColor(type.Color);
                                     else
                                     {
