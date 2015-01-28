@@ -21,9 +21,11 @@ namespace ConnectomeViz.AnnotationService {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ConnectomeViz.AnnotationService.LocationLink))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ConnectomeViz.AnnotationService.DataObjectWithKeyOflong))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ConnectomeViz.AnnotationService.Location))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ConnectomeViz.AnnotationService.LocationHistory))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ConnectomeViz.AnnotationService.LocationPositionOnly))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ConnectomeViz.AnnotationService.DataObjectWithParentOflong))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ConnectomeViz.AnnotationService.Structure))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ConnectomeViz.AnnotationService.StructureHistory))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ConnectomeViz.AnnotationService.StructureType))]
     public partial class DataObject : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -197,9 +199,11 @@ namespace ConnectomeViz.AnnotationService {
     [System.Runtime.Serialization.DataContractAttribute(Name="DataObjectWithKeyOflong", Namespace="http://schemas.datacontract.org/2004/07/Annotation")]
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ConnectomeViz.AnnotationService.Location))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ConnectomeViz.AnnotationService.LocationHistory))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ConnectomeViz.AnnotationService.LocationPositionOnly))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ConnectomeViz.AnnotationService.DataObjectWithParentOflong))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ConnectomeViz.AnnotationService.Structure))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ConnectomeViz.AnnotationService.StructureHistory))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ConnectomeViz.AnnotationService.StructureType))]
     public partial class DataObjectWithKeyOflong : ConnectomeViz.AnnotationService.DataObject {
         
@@ -224,6 +228,7 @@ namespace ConnectomeViz.AnnotationService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Location", Namespace="http://schemas.datacontract.org/2004/07/Annotation")]
     [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ConnectomeViz.AnnotationService.LocationHistory))]
     public partial class Location : ConnectomeViz.AnnotationService.DataObjectWithKeyOflong {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -453,6 +458,29 @@ namespace ConnectomeViz.AnnotationService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="LocationHistory", Namespace="http://schemas.datacontract.org/2004/07/Annotation")]
+    [System.SerializableAttribute()]
+    public partial class LocationHistory : ConnectomeViz.AnnotationService.Location {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ulong ChangedColumnMaskField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ulong ChangedColumnMask {
+            get {
+                return this.ChangedColumnMaskField;
+            }
+            set {
+                if ((this.ChangedColumnMaskField.Equals(value) != true)) {
+                    this.ChangedColumnMaskField = value;
+                    this.RaisePropertyChanged("ChangedColumnMask");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="LocationPositionOnly", Namespace="http://schemas.datacontract.org/2004/07/Annotation")]
     [System.SerializableAttribute()]
     public partial class LocationPositionOnly : ConnectomeViz.AnnotationService.DataObjectWithKeyOflong {
@@ -495,6 +523,7 @@ namespace ConnectomeViz.AnnotationService {
     [System.Runtime.Serialization.DataContractAttribute(Name="DataObjectWithParentOflong", Namespace="http://schemas.datacontract.org/2004/07/Annotation")]
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ConnectomeViz.AnnotationService.Structure))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ConnectomeViz.AnnotationService.StructureHistory))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ConnectomeViz.AnnotationService.StructureType))]
     public partial class DataObjectWithParentOflong : ConnectomeViz.AnnotationService.DataObjectWithKeyOflong {
         
@@ -519,6 +548,7 @@ namespace ConnectomeViz.AnnotationService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Structure", Namespace="http://schemas.datacontract.org/2004/07/Annotation")]
     [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ConnectomeViz.AnnotationService.StructureHistory))]
     public partial class Structure : ConnectomeViz.AnnotationService.DataObjectWithParentOflong {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -664,6 +694,13 @@ namespace ConnectomeViz.AnnotationService {
                 }
             }
         }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="StructureHistory", Namespace="http://schemas.datacontract.org/2004/07/Annotation")]
+    [System.SerializableAttribute()]
+    public partial class StructureHistory : ConnectomeViz.AnnotationService.Structure {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -1579,6 +1616,9 @@ namespace ConnectomeViz.AnnotationService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAnnotateStructures/Split", ReplyAction="http://tempuri.org/IAnnotateStructures/SplitResponse")]
         long Split(long StructureA, ConnectomeViz.AnnotationService.LocationLink locLink);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAnnotateStructures/GetStructureChangeLog", ReplyAction="http://tempuri.org/IAnnotateStructures/GetStructureChangeLogResponse")]
+        ConnectomeViz.AnnotationService.StructureHistory[] GetStructureChangeLog(System.Nullable<long> structure_id, System.Nullable<System.DateTime> begin_time, System.Nullable<System.DateTime> end_time);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1671,6 +1711,10 @@ namespace ConnectomeViz.AnnotationService {
         public long Split(long StructureA, ConnectomeViz.AnnotationService.LocationLink locLink) {
             return base.Channel.Split(StructureA, locLink);
         }
+        
+        public ConnectomeViz.AnnotationService.StructureHistory[] GetStructureChangeLog(System.Nullable<long> structure_id, System.Nullable<System.DateTime> begin_time, System.Nullable<System.DateTime> end_time) {
+            return base.Channel.GetStructureChangeLog(structure_id, begin_time, end_time);
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1712,6 +1756,9 @@ namespace ConnectomeViz.AnnotationService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAnnotateLocations/LocationLinksForSection", ReplyAction="http://tempuri.org/IAnnotateLocations/LocationLinksForSectionResponse")]
         ConnectomeViz.AnnotationService.LocationLink[] LocationLinksForSection(out long QueryExecutedTime, out ConnectomeViz.AnnotationService.LocationLink[] DeletedLinks, long section, long ModifiedAfterThisTime);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAnnotateLocations/GetLocationChangeLog", ReplyAction="http://tempuri.org/IAnnotateLocations/GetLocationChangeLogResponse")]
+        ConnectomeViz.AnnotationService.LocationHistory[] GetLocationChangeLog(System.Nullable<long> structure_id, System.Nullable<System.DateTime> begin_time, System.Nullable<System.DateTime> end_time);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1787,6 +1834,10 @@ namespace ConnectomeViz.AnnotationService {
         
         public ConnectomeViz.AnnotationService.LocationLink[] LocationLinksForSection(out long QueryExecutedTime, out ConnectomeViz.AnnotationService.LocationLink[] DeletedLinks, long section, long ModifiedAfterThisTime) {
             return base.Channel.LocationLinksForSection(out QueryExecutedTime, out DeletedLinks, section, ModifiedAfterThisTime);
+        }
+        
+        public ConnectomeViz.AnnotationService.LocationHistory[] GetLocationChangeLog(System.Nullable<long> structure_id, System.Nullable<System.DateTime> begin_time, System.Nullable<System.DateTime> end_time) {
+            return base.Channel.GetLocationChangeLog(structure_id, begin_time, end_time);
         }
     }
     

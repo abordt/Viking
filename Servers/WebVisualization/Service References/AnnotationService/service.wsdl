@@ -350,6 +350,12 @@
   <wsdl:message name="IAnnotateStructures_Split_OutputMessage">
     <wsdl:part name="parameters" element="tns:SplitResponse" />
   </wsdl:message>
+  <wsdl:message name="IAnnotateStructures_GetStructureChangeLog_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStructureChangeLog" />
+  </wsdl:message>
+  <wsdl:message name="IAnnotateStructures_GetStructureChangeLog_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStructureChangeLogResponse" />
+  </wsdl:message>
   <wsdl:message name="IAnnotateLocations_CreateLocation_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateLocation" />
   </wsdl:message>
@@ -421,6 +427,12 @@
   </wsdl:message>
   <wsdl:message name="IAnnotateLocations_LocationLinksForSection_OutputMessage">
     <wsdl:part name="parameters" element="tns:LocationLinksForSectionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAnnotateLocations_GetLocationChangeLog_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLocationChangeLog" />
+  </wsdl:message>
+  <wsdl:message name="IAnnotateLocations_GetLocationChangeLog_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLocationChangeLogResponse" />
   </wsdl:message>
   <wsdl:message name="ICircuit_getGraph_InputMessage">
     <wsdl:part name="parameters" element="tns:getGraph" />
@@ -549,6 +561,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IAnnotateStructures/Split" message="tns:IAnnotateStructures_Split_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAnnotateStructures/SplitResponse" message="tns:IAnnotateStructures_Split_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetStructureChangeLog">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAnnotateStructures/GetStructureChangeLog" message="tns:IAnnotateStructures_GetStructureChangeLog_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAnnotateStructures/GetStructureChangeLogResponse" message="tns:IAnnotateStructures_GetStructureChangeLog_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IAnnotateLocations">
     <wsdl:operation name="CreateLocation">
@@ -598,6 +614,10 @@
     <wsdl:operation name="LocationLinksForSection">
       <wsdl:input wsaw:Action="http://tempuri.org/IAnnotateLocations/LocationLinksForSection" message="tns:IAnnotateLocations_LocationLinksForSection_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAnnotateLocations/LocationLinksForSectionResponse" message="tns:IAnnotateLocations_LocationLinksForSection_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationChangeLog">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAnnotateLocations/GetLocationChangeLog" message="tns:IAnnotateLocations_GetLocationChangeLog_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAnnotateLocations/GetLocationChangeLogResponse" message="tns:IAnnotateLocations_GetLocationChangeLog_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ICircuit">
@@ -831,6 +851,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetStructureChangeLog">
+      <soap12:operation soapAction="http://tempuri.org/IAnnotateStructures/GetStructureChangeLog" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="Annotation.Service.Interfaces.IAnnotateLocations-Binary" type="tns:IAnnotateLocations">
     <wsp:PolicyReference URI="#Annotation.Service.Interfaces.IAnnotateLocations-Binary_policy" />
@@ -936,6 +965,15 @@
     </wsdl:operation>
     <wsdl:operation name="LocationLinksForSection">
       <soap12:operation soapAction="http://tempuri.org/IAnnotateLocations/LocationLinksForSection" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationChangeLog">
+      <soap12:operation soapAction="http://tempuri.org/IAnnotateLocations/GetLocationChangeLog" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

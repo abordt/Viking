@@ -320,7 +320,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="flex\lib\json_simple-1.1.jar" />
-    <Content Include="MarcLab%28connectome.utah.edu%29_Rabbit%28MarcLab%29_18282_1_reduced_nonpositioned.svg" />
     <Content Include="Scripts\3DVizScript.js" />
     <Content Include="Scripts\facebox.js" />
     <Content Include="Content\farbtastic.css" />
@@ -593,7 +592,6 @@
     <Content Include="flex\VikingPlot.jnlp">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="MarcLab%28connectome.utah.edu%29_Rabbit%28MarcLab%29_18282_1_reduced_nonpositioned.json" />
     <None Include="Service References\AnnotationService\Annotation.Service.GraphClasses.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -614,6 +612,9 @@
     <None Include="Service References\AnnotationService\ConnectomeViz.AnnotationService.Location.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\AnnotationService\ConnectomeViz.AnnotationService.LocationHistory.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\AnnotationService\ConnectomeViz.AnnotationService.LocationLink.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -621,6 +622,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\AnnotationService\ConnectomeViz.AnnotationService.Structure.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AnnotationService\ConnectomeViz.AnnotationService.StructureHistory.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\AnnotationService\ConnectomeViz.AnnotationService.StructureLink.datasource">
